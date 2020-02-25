@@ -15,9 +15,10 @@ pipeline {
         sh 'curl -sSL https://download.sourceclear.com/ci.sh | sh'
       }
     }
-    stage('Pipeline Scan')
-    steps {
-      sh 'echo pipeline scan will run here'
+    stage('Pipeline Scan') {
+      steps {
+        sh 'echo pipeline scan will run here'
+      }
     }
     stage('Test') {
       steps {
