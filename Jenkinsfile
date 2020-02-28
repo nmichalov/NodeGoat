@@ -10,11 +10,11 @@ pipeline {
         sh 'rm -rf node_modules && npm install'
       }
     }
-    stage('SCA') {
-      steps {
-        sh 'curl -sSL https://download.sourceclear.com/ci.sh | sh'
-      }
-    }
+    // stage('SCA') {
+    //   steps {
+    //     sh 'curl -sSL https://download.sourceclear.com/ci.sh | sh'
+    //   }
+    // }
     stage('Interactive') {
       steps {
         wrap([$class: 'VeracodeInteractiveBuildWrapper', location: 'host.docker.internal', port: '10010']) {
