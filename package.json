@@ -36,7 +36,7 @@
     "start-infra": "docker-compose up",
     "stop-infra": "docker-compose down",
     "cy:verify": "cypress verify",
-    "test:iast": "NODE_ENV=test cypress --require ./agent_linux64.node run"
+    "test:iast": "node node_modules/grunt-cli/bin/grunt --require ./agent_linux64.node test"
   },
   "devDependencies": {
     "async": "^2.0.0-rc.4",
