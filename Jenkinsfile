@@ -19,8 +19,7 @@ pipeline {
       steps {
         wrap([$class: 'VeracodeInteractiveBuildWrapper', location: 'host.docker.internal', port: '10010']) {
           sh 'curl -sSL https://s3.us-east-2.amazonaws.com/app.veracode-iast.io/iast-ci.sh | sh'
-          sh 'NODE_ENV=test npm start'
-          sh 'npm run test:ci'
+          sh 'npm run test-iast'
         }
       }
     }
