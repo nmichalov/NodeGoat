@@ -15,21 +15,23 @@ pipeline {
     //     sh 'curl -sSL https://download.sourceclear.com/ci.sh | sh'
     //   }
     // }
-    // stage('Interactive') {
-    //   steps {
-    //     wrap([$class: 'VeracodeInteractiveBuildWrapper', location: 'host.docker.internal', port: '10010']) {
-    //       sh 'curl -sSL https://s3.us-east-2.amazonaws.com/app.veracode-iast.io/iast-ci.sh | sh'
-    //       sh 'npm run test:iast'
-    //     }
-    //   }
-    // }
-    stage('Test') {
+    stage('Interactive') {
       steps {
-        sh 'npm --require ./agent_linux64.node start'
-        sh 'sleep 30'
-        sh 'npm run test:ci'
+        wrap([$class: 'VeracodeInteractiveBuildWrapper', location: 'host.docker.internal', port: '10010']) {
+          sh 'curl -sSL https://s3.us-east-2.amazonaws.com/app.veracode-iast.io/iast-ci.sh | sh'
+          sh 'npm --require ./agent_linux.node start'
+          sh 'sleep 30'
+          sh 'npm run test:ci'
+        }
       }
     }
+    // stage('Test') {
+    //   steps {
+    //     sh 'npm --require ./agent_linux64.node start'
+    //     sh 'sleep 30'
+    //     sh 'npm run test:ci'
+    //   }
+    // }
     // stage('Static') {
     //   steps {
     //     zip zipFile: 'upload.zip', archive: false, glob: '*.js,*.json,app/**,artifacts/**,config/**'
