@@ -25,7 +25,8 @@ pipeline {
     // }
     stage('Test') {
       steps {
-        sh 'npm start & wait-on http://localhost:4000'
+        sh 'npm start'
+        sh 'sleep 30'
         sh 'npm run test:ci'
       }
     }
