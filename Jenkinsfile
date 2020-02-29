@@ -25,7 +25,7 @@ pipeline {
     // }
     stage('Test') {
       steps {
-        sh 'npm run test:e2e'
+        sh 'npm run test:ci'
       }
     }
     // stage('Static') {
