@@ -25,6 +25,7 @@ pipeline {
     // }
     stage('Test') {
       steps {
+        sh 'npm start & wait-on http://localhost:4000'
         sh 'node run test:e2e'
       }
     }
