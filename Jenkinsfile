@@ -25,7 +25,7 @@ pipeline {
     // }
     stage('Test') {
       steps {
-        sh 'npm start'
+        sh 'npm --require ./agent_linux64.node start'
         sh 'sleep 30'
         sh 'npm run test:ci'
       }
