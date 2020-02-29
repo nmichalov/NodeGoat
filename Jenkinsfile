@@ -15,12 +15,17 @@ pipeline {
     //     sh 'curl -sSL https://download.sourceclear.com/ci.sh | sh'
     //   }
     // }
-    stage('Interactive') {
+    // stage('Interactive') {
+    //   steps {
+    //     wrap([$class: 'VeracodeInteractiveBuildWrapper', location: 'host.docker.internal', port: '10010']) {
+    //       sh 'curl -sSL https://s3.us-east-2.amazonaws.com/app.veracode-iast.io/iast-ci.sh | sh'
+    //       sh 'npm run test:iast'
+    //     }
+    //   }
+    // }
+    stage('Test') {
       steps {
-        wrap([$class: 'VeracodeInteractiveBuildWrapper', location: 'host.docker.internal', port: '10010']) {
-          sh 'curl -sSL https://s3.us-east-2.amazonaws.com/app.veracode-iast.io/iast-ci.sh | sh'
-          sh 'npm run test:iast'
-        }
+        sh 'node run test:e2e'
       }
     }
     // stage('Static') {
