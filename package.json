@@ -28,6 +28,7 @@
   },
   "scripts": {
     "start": "node server.js",
+    "start:iast": "node --require ./agent_linux64.node server.js",
     "test:e2e": "NODE_ENV=test cypress open",
     "test:ci": "NODE_ENV=test cypress run",
     "test": "node node_modules/grunt-cli/bin/grunt test",
@@ -57,6 +58,7 @@
     "mocha": "^2.4.5",
     "selenium-webdriver": "^2.53.2",
     "should": "^8.3.1",
+    "wait-on": "^4.0.1",
     "zaproxy": "^0.2.0"
   },
   "repository": "https://github.com/OWASP/NodejsGoat",
