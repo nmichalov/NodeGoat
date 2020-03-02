@@ -20,9 +20,10 @@ pipeline {
         wrap([$class: 'VeracodeInteractiveBuildWrapper', location: 'host.docker.internal', port: '10010']) {
           sh 'curl -sSL https://s3.us-east-2.amazonaws.com/app.veracode-iast.io/iast-ci.sh | sh'
           // sh 'npm --require ./agent_linux.node start'
-          sh 'npm start'
-          sh 'sleep 30'
-          sh 'npm run test:ci'
+          // sh 'npm start'
+          // sh 'sleep 30'
+          // sh 'npm run test:ci'
+          sh 'npm test:iast'
         }
       }
     }
