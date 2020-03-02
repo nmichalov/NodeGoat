@@ -23,7 +23,7 @@ pipeline {
           // sh 'npm start'
           // sh 'sleep 30'
           // sh 'npm run test:ci'
-          sh 'npm test:iast'
+          sh 'npm run test:iast'
         }
       }
     }
