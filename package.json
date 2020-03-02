@@ -28,7 +28,7 @@
   },
   "scripts": {
     "start": "node server.js",
-    "start:iast": "LD_LIBRARY_PATH=$PWD node --require ./agent_linux64.node server.js",
+    "start:iast": "LD_LIBRARY_PATH=$PWD node --require ./agent_linux64.node server.js &",
     "test:e2e": "NODE_ENV=test cypress open",
     "test:ci": "NODE_ENV=test cypress run",
     "test": "node node_modules/grunt-cli/bin/grunt test",
