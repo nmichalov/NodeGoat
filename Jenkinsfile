@@ -1,7 +1,6 @@
 pipeline {
   agent {
     docker {
-      // image 'node:8.16.0'
       image 'cypress/base:10'
     }
   }
@@ -20,8 +19,7 @@ pipeline {
       steps {
         wrap([$class: 'VeracodeInteractiveBuildWrapper', location: 'host.docker.internal', port: '10010']) {
           sh 'curl -sSL https://s3.us-east-2.amazonaws.com/app.veracode-iast.io/iast-ci.sh | sh'
-          sh 'npm run start:iast'
-          // sh 'sleep 30'
+          sh 'npm run start:iast & wait-on http://localhost:4000'
           sh 'npm run test:ci'
         }
       }
