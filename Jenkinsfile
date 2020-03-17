@@ -29,6 +29,7 @@ pipeline {
     //}
      stage('Static') {
        steps {
+         sh 'rm -f upload.zip'
          zip zipFile: 'upload.zip', archive: false, glob: '*.js,*.json,app/**,artifacts/**,config/**'
          sh 'curl -O https://downloads.veracode.com/securityscan/pipeline-scan-LATEST.zip'
          sh 'unzip -o pipeline-scan-LATEST.zip pipeline-scan.jar'
