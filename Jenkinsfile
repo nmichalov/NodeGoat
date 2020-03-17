@@ -2,7 +2,8 @@ pipeline {
   agent {
     docker {
       // image 'cypress/base:10'
-      image 'nmichalov/veracode-tools'
+      image 'timbru31/java-node/'
+      
     }
   }
   stages {
