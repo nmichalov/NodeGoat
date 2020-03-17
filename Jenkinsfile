@@ -2,7 +2,7 @@ pipeline {
   agent {
     docker {
       // image 'cypress/base:10'
-      image 'timbru31/java-node/'
+      image 'timbru31/java-node'
       
     }
   }
