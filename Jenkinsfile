@@ -1,8 +1,8 @@
 pipeline {
   agent {
     docker {
-      // image 'cypress/base:10'
-      image 'timbru31/java-node'
+      image 'cypress/base:10'
+      // image 'timbru31/java-node'
       
     }
   }
@@ -27,20 +27,20 @@ pipeline {
        }
      }
     }
-     stage('Static') {
-       steps {
-         sh 'rm -f upload.zip'
-         zip zipFile: 'upload.zip', archive: false, glob: '*.js,*.json,app/**,artifacts/**,config/**'
-         sh 'curl -O https://downloads.veracode.com/securityscan/pipeline-scan-LATEST.zip'
-         sh 'unzip -o pipeline-scan-LATEST.zip pipeline-scan.jar'
-                 sh 'java -jar pipeline-scan.jar \
-                     --veracode_api_id "${VERACODE_API_ID}" \
-                     --veracode_api_key "${VERACODE_API_SECRET}" \
-                     --project_name "NodeGoat" \
-                     --file upload.zip \
-                     --json_output_file="baseline.json"'
-       }
-     }
+    //  stage('Static') {
+    //    steps {
+    //      sh 'rm -f upload.zip'
+    //      zip zipFile: 'upload.zip', archive: false, glob: '*.js,*.json,app/**,artifacts/**,config/**'
+    //      sh 'curl -O https://downloads.veracode.com/securityscan/pipeline-scan-LATEST.zip'
+    //      sh 'unzip -o pipeline-scan-LATEST.zip pipeline-scan.jar'
+    //              sh 'java -jar pipeline-scan.jar \
+    //                  --veracode_api_id "${VERACODE_API_ID}" \
+    //                  --veracode_api_key "${VERACODE_API_SECRET}" \
+    //                  --project_name "NodeGoat" \
+    //                  --file upload.zip \
+    //                  --json_output_file="baseline.json"'
+    //    }
+    //  }
     stage('Deploy') {
       steps {
         sh 'echo npm package would run here...'
