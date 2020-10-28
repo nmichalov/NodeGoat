@@ -19,8 +19,8 @@ pipeline {
     // }
     stage('Interactive') {
      steps {
-       // wrap([$class: 'VeracodeInteractiveBuildWrapper', location: 'host.docker.internal', port: '10010']) {
-       wrap([$class: 'VeracodeInteractiveBuildWrapper', location: 'iast-demo.nmichalov.sa.veracode.io', port: '443']) {
+         wrap([$class: 'VeracodeInteractiveBuildWrapper', location: 'host.docker.internal', port: '10010']) {
+       // wrap([$class: 'VeracodeInteractiveBuildWrapper', location: 'iast-demo.nmichalov.sa.veracode.io', port: '443']) {
          sh 'curl -sSL https://s3.us-east-2.amazonaws.com/app.veracode-iast.io/iast-ci.sh | sh'
         //  sh 'npm run start:iast & wait-on http://localhost:4000'
          sh 'npm run start:iast'
