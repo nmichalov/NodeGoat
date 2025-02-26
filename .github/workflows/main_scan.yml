@@ -28,7 +28,7 @@ jobs:
           scan_dependencies: true
           scan_summary_output_type: 'table'
           sarif_file: findings.sarif
-          additional_args: '--install-build-tools --languages=javascript,typescript'
+          additional_args: '--install-build-tools --enable-build-tools-version-detection --languages=javascript,typescript'
       - name: Upload SARIF to github
         uses: github/codeql-action/upload-sarif@v3
         with:
